@@ -20,7 +20,7 @@ class Timer extends Component {
 
   componentWillMount(){
     this.getTimeUntil(this.props.time)
-    console.log(`will mount`, this.props.time.selected);
+    //console.log(`will mount`, this.props.time.selected);
   }
 
   componentDidMount(){
@@ -50,13 +50,6 @@ class Timer extends Component {
       secondOrSeconds:secondOrSeconds,
     })
   }
-
-  // showOrHideTimer (selected){
-  //   if (selected===true){
-  //     console.log(`hello`);
-  //   }
-  //   return "clock-days"
-  // }
 
   render(){
     return (

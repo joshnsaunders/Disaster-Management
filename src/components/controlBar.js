@@ -1,10 +1,12 @@
 import React from "react";
+import Add from './add'
+import People from './people'
 
-const ControlBar = ({ tiles, update, originalData }) => {
+const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, togglePopUp, type, updateType }) => {
 
-  const prioritizePeople = data => {
+  const prioritizePeople = (data) => {
+    {console.log(controlbar.all);}
     let people = [];
-
     data.sort(function(a, b) {
       return a.id - b.id;
     });
@@ -21,7 +23,14 @@ const ControlBar = ({ tiles, update, originalData }) => {
         people.push(data[i]);
       }
     }
-
+    controlbar.all = false
+    controlbar.people = true
+    controlbar.car = false
+    controlbar.electrical = false
+    controlbar.shelter = false
+    controlbar.tree = false
+    controlbar.water = false
+    updateControlBar(controlbar);
     update(people);
   };
 
@@ -43,6 +52,16 @@ const ControlBar = ({ tiles, update, originalData }) => {
         car.push(data[i]);
       }
     }
+
+    controlbar.all = false
+    controlbar.people = false
+    controlbar.car = true
+    controlbar.electrical = false
+    controlbar.shelter = false
+    controlbar.tree = false
+    controlbar.water = false
+
+    updateControlBar(controlbar);
     update(car);
   };
 
@@ -65,6 +84,16 @@ const ControlBar = ({ tiles, update, originalData }) => {
         electrical.push(data[i]);
       }
     }
+
+    controlbar.all = false
+    controlbar.people = false
+    controlbar.car = false
+    controlbar.electrical = true
+    controlbar.shelter = false
+    controlbar.tree = false
+    controlbar.water = false
+
+    updateControlBar(controlbar);
     update(electrical);
   };
 
@@ -86,6 +115,16 @@ const ControlBar = ({ tiles, update, originalData }) => {
         shelter.push(data[i]);
       }
     }
+
+    controlbar.all = false
+    controlbar.people = false
+    controlbar.car = false
+    controlbar.electrical = false
+    controlbar.shelter = true
+    controlbar.tree = false
+    controlbar.water = false
+
+    updateControlBar(controlbar);
     update(shelter);
   };
 
@@ -107,6 +146,16 @@ const ControlBar = ({ tiles, update, originalData }) => {
         tree.push(data[i]);
       }
     }
+
+    controlbar.all = false
+    controlbar.people = false
+    controlbar.car = false
+    controlbar.electrical = false
+    controlbar.shelter = false
+    controlbar.tree = true
+    controlbar.water = false
+
+    updateControlBar(controlbar);
     update(tree);
   };
 
@@ -128,10 +177,19 @@ const ControlBar = ({ tiles, update, originalData }) => {
         flood.push(data[i]);
       }
     }
+    controlbar.all = false
+    controlbar.people = false
+    controlbar.car = false
+    controlbar.electrical = false
+    controlbar.shelter = false
+    controlbar.tree = false
+    controlbar.water = true
+
+    updateControlBar(controlbar);
     update(flood);
   };
 
-  const prioritizeAll = data => {
+  const prioritizeAll = (data, controlbar) => {
     data.sort(function(a, b) {
       return a.id - b.id;
     });
@@ -142,50 +200,74 @@ const ControlBar = ({ tiles, update, originalData }) => {
       all.push(data[i]);
     }
 
+    controlbar.all = true
+    controlbar.people = false
+    controlbar.car = false
+    controlbar.electrical = false
+    controlbar.shelter = false
+    controlbar.tree = false
+    controlbar.water = false
+
+    updateControlBar(controlbar);
     update(all);
-  };
+  }
+  const controlAll = (data) =>{
+    console.log(data);
+    if(data.all){
+      return "controlBarOneSelected"
+    } else { return "controlBarOne"}
+  }
+  const fixed = () => {
+    console.log('hi');
+  }
 
   return (
-    <div className="controlBar">
+
+    <div
+      className="controlBar"
+      onScroll={fixed()}>
       <div className="checkboxes">
         <div
-          onClick={prioritizeAll.bind(this, tiles)}
-          className="controlBarOne"
+          onClick={prioritizeAll.bind(this, tiles, controlbar)}
+          className={controlbar.all ? "controlBarOneSelected controlBarOne" : "controlBarOne"}
         >
           All
         </div>
         <div
-          onClick={prioritizePeople.bind(this, tiles)}
-          className="labels fa fa-users controlBarTwo"
+          onClick={prioritizePeople.bind(this, tiles, controlbar)}
+          className={controlbar.people ? "labels fa fa-users controlBarTwoSelected" : "labels fa fa-users controlBarTwo"}
         />
         <div
-          onClick={prioritizeCar.bind(this, tiles)}
-          className="labels fa fa-car controlBarThree"
+          onClick={prioritizeCar.bind(this, tiles, controlbar)}
+          className={controlbar.car ? "labels fa fa-car controlBarThreeSelected" : "labels fa fa-car controlBarThree"}
         />
         <div
           onClick={prioritizeElectrical.bind(this, tiles)}
-          className="labels fa fa-bolt controlBarFour"
+          className={controlbar.electrical ? "labels fa fa-bolt controlBarFourSelected" : "labels fa fa-bolt controlBarFour"}
         />
         <div
           onClick={prioritizeShelter.bind(this, tiles)}
-          className="labels fa fa-home controlBarFive"
+          className={controlbar.shelter ? "labels fa fa-home controlBarFiveSelected" : "labels fa fa-home controlBarFive"}
         />
         <div
           onClick={prioritizeTree.bind(this, tiles)}
-          className="labels fa fa-tree controlBarSix"
+          className={controlbar.tree ? "labels fa fa-tree controlBarSixSelected" : "labels fa fa-tree controlBarSix"}
         />
         <div
           onClick={prioritizeFlood.bind(this, tiles)}
-          className="labels fa fa-tint controlBarSeven"
+          className={controlbar.water ? "labels fa fa-tint controlBarSevenSelected" : "labels fa fa-tint controlBarSeven"}
         />
       </div>
       <div />
-      <div className="Add">
-        <div>Title</div>
-        <div>Address</div>
-        <div>Description</div>
-        <button>Add</button>
-      </div>
+      <Add
+        togglePopUp={togglePopUp}
+        showPopUp={showPopUp}
+        type={type}
+        updateType={updateType}
+      />
+      <People
+        tiles={tiles}
+      />
     </div>
   );
 };

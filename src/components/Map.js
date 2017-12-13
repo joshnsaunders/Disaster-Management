@@ -217,7 +217,7 @@ export default class Map extends Component {
 
 
         }
-      }, 10);
+      }, 250);
     }
 
     map.addListener("click", function() {

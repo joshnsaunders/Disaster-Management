@@ -2,7 +2,7 @@ import React from 'react';
 import ControlBar from './controlBar'
 import Timer from './timer'
 
-const Response = ({tiles, update, originalData}) => {
+const Response = ({tiles, update, controlbar, updateControlBar, showPopUp, togglePopUp, type, updateType}) => {
 
   const titleClasses = (data) =>{
     const clss = ['tileTitle']
@@ -52,6 +52,9 @@ const Response = ({tiles, update, originalData}) => {
     } else {
       data.safe=true
     }
+
+    
+
     update(tiles)
   }
 
@@ -105,12 +108,27 @@ const Response = ({tiles, update, originalData}) => {
     return clss.join(" ")
   }
 
+  const availability = (data) => {
+    data.inUse = data.inUse - 1
+    update(tiles)
+  }
+
+  const noRoom = (data) => {
+    data.inUse = data.inUse + 1
+    update(tiles)
+  }
+
   return (
     <div>
     <ControlBar
+      updateControlBar = {updateControlBar}
+      controlbar={controlbar}
       tiles= {tiles}
       update={update}
-      originalData={originalData}
+      showPopUp={showPopUp}
+      togglePopUp={togglePopUp}
+      type={type}
+      updateType={updateType}
       />
     <div className="responseWrapper">
       {tiles.map((data, index) =>(
@@ -121,14 +139,28 @@ const Response = ({tiles, update, originalData}) => {
             <div className="tileDescription">{data.description}</div>
             <div className={data.person ? "show dateSafe" : "hide"}>
               <Timer time={data}/>
-
               <div className={safetyCheck(data)}>
                 <div className="safeTitle">Safe</div>
                 <div className="safeInput"><input type="checkbox" onClick={selectClick.bind(this, data)} checked={checked(data)}/></div>
               </div>
             </div>
 
-
+            <div className={data.shelter ? "shelterFooter" : "hide"}>
+              <div className="capacity">Capacity: {data.capacity}</div>
+              <div className="availability">Avail: {data.capacity - data.inUse}</div>
+              <div
+              className="plus"
+              onClick={availability.bind(this, data)}
+              >
+              +
+              </div>
+              <div
+              className="minus"
+              onClick={noRoom.bind(this, data)}
+              >
+              -
+              </div>
+            </div>
 
           </div>
         </div>
