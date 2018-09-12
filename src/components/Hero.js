@@ -2,7 +2,7 @@ import React from 'react';
 import InstagramEmbed from 'react-instagram-embed'
 
 const Hero = () => {
-  return(
+  return (
     <div className="heroWrapper">
       <div className="helpTile heroTile">
         <div className="helpContent helpTitle">Need Help?</div>

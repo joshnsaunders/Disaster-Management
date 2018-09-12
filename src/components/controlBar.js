@@ -5,9 +5,9 @@ import People from './people'
 const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, togglePopUp, type, updateType }) => {
 
   const prioritizePeople = (data) => {
-    {console.log(controlbar.all);}
+    { console.log(controlbar.all); }
     let people = [];
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
 
@@ -35,7 +35,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeCar = data => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
 
@@ -66,7 +66,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeElectrical = data => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
 
@@ -98,7 +98,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeShelter = data => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
     let shelter = [];
@@ -129,7 +129,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeTree = data => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
     let tree = [];
@@ -160,7 +160,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeFlood = data => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
     let flood = [];
@@ -190,7 +190,7 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
   };
 
   const prioritizeAll = (data, controlbar) => {
-    data.sort(function(a, b) {
+    data.sort(function (a, b) {
       return a.id - b.id;
     });
     let all = [];
@@ -211,11 +211,11 @@ const ControlBar = ({ tiles, update, controlbar, updateControlBar, showPopUp, to
     updateControlBar(controlbar);
     update(all);
   }
-  const controlAll = (data) =>{
+  const controlAll = (data) => {
     console.log(data);
-    if(data.all){
+    if (data.all) {
       return "controlBarOneSelected"
-    } else { return "controlBarOne"}
+    } else { return "controlBarOne" }
   }
   const fixed = () => {
     console.log('hi');

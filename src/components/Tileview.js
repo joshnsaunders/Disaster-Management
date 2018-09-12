@@ -3,7 +3,7 @@ import React from 'react'
 const Tileview = () => {
   return (
     <div>
-    tileview
+      tileview
     </div>
   );
 }

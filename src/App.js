@@ -16,17 +16,17 @@ class App extends Component {
     super(props);
     this.state = {
       tiles: tiles,
-      controlbar:{
-        all:true,
-        people:false,
-        car:false,
-        electrical:false,
-        shelter:false,
-        tree:false,
-        water:false
+      controlbar: {
+        all: true,
+        people: false,
+        car: false,
+        electrical: false,
+        shelter: false,
+        tree: false,
+        water: false
       },
-      showPopUp:false,
-      type:"",
+      showPopUp: false,
+      type: "",
     };
   }
 
@@ -53,15 +53,15 @@ class App extends Component {
                   }}
                   updateControlBar={bar => {
                     console.log('update control bar'),
-                      this.setState({...this.state, controlbar:bar});
+                      this.setState({ ...this.state, controlbar: bar });
                   }}
-                  togglePopUp = {() => {
+                  togglePopUp={() => {
                     console.log('toggle pop up'),
-                    this.setState({showPopUp:!this.state.showPopUp});
+                      this.setState({ showPopUp: !this.state.showPopUp });
                   }}
-                  updateType = {typ => {
+                  updateType={typ => {
                     console.log('update type'),
-                    this.setState({type:typ});
+                      this.setState({ type: typ });
                   }}
                 />
               )}

@@ -34,7 +34,7 @@ export default class Map extends Component {
     });
 
     function Loop(i) {
-      setTimeout(function() {
+      setTimeout(function () {
 
         var person = new MarkerWithLabel({
           position: {
@@ -63,11 +63,11 @@ export default class Map extends Component {
         i++;
         if (i < floodCoords.length) {
           Loop(i);
-          if(i===15){
+          if (i === 15) {
             var tree = new MarkerWithLabel({
               position: {
-                lat:39.760384,
-                lng:-104.999656
+                lat: 39.760384,
+                lng: -104.999656
               },
               icon: {
                 path: "M22-48h-44v43h16l6 5 6-5h16z",
@@ -88,7 +88,7 @@ export default class Map extends Component {
               }
             });
           }
-          if(i===18){
+          if (i === 18) {
             var singlePerson = new MarkerWithLabel({
               position: {
                 lat: 39.756194,
@@ -113,7 +113,7 @@ export default class Map extends Component {
               }
             });
           }
-          if (i===28){
+          if (i === 28) {
             var liveWire = new MarkerWithLabel({
               position: {
                 lat: 39.750519,
@@ -139,11 +139,11 @@ export default class Map extends Component {
             });
           }
 
-          if (i===33){
+          if (i === 33) {
             var people = new MarkerWithLabel({
               position: {
                 lat: 39.744052,
-                lng:  -105.009827,
+                lng: -105.009827,
               },
               icon: {
                 path: "M22-48h-44v43h16l6 5 6-5h16z",
@@ -164,11 +164,11 @@ export default class Map extends Component {
               }
             });
           }
-          if(i===48){
+          if (i === 48) {
             var pickUp = new MarkerWithLabel({
               position: {
-                lat:39.740103,
-                lng:-104.990004
+                lat: 39.740103,
+                lng: -104.990004
               },
               icon: {
                 path: "M22-48h-44v43h16l6 5 6-5h16z",
@@ -189,10 +189,10 @@ export default class Map extends Component {
               }
             });
           }
-          if (i===52){
+          if (i === 52) {
             var shelter = new MarkerWithLabel({
               position: {
-                lat:39.756421,
+                lat: 39.756421,
                 lng: -104.968196
               },
               icon: {
@@ -220,7 +220,7 @@ export default class Map extends Component {
       }, 250);
     }
 
-    map.addListener("click", function() {
+    map.addListener("click", function () {
       Loop(0);
     });
 
@@ -238,10 +238,10 @@ export default class Map extends Component {
   }
 
   render() {
-    return ( <
-      div id = "app" >
+    return (<
+      div id="app" >
       <
-      div id = "map" / >
+        div id="map" />
       <
       /div>
     );
