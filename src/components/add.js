@@ -3,23 +3,23 @@ import React from "react";
 const Add = ({ showPopUp, togglePopUp, type, updateType }) => {
   console.log(showPopUp);
 
-const selectType = (event) => {
-  console.log(`event`, event.target.value);
-  console.log('select type');
-  updateType(event.target.value)
-}
-const name = (type) => {
-  console.log(`type`, type);
-  let clss = []
-  if(type==='Shelter'||type==='Person'){
-    clss.push("nameType show")
+  const selectType = (event) => {
+    console.log(`event`, event.target.value);
+    console.log('select type');
+    updateType(event.target.value)
   }
-  else {clss.push("hide")}
-  return clss.join('')
-}
-const submitInput = () => {
-  console.log(`submit Input`);
-}
+  const name = (type) => {
+    console.log(`type`, type);
+    let clss = []
+    if (type === 'Shelter' || type === 'Person') {
+      clss.push("nameType show")
+    }
+    else { clss.push("hide") }
+    return clss.join('')
+  }
+  const submitInput = () => {
+    console.log(`submit Input`);
+  }
 
   return (
     <div>
@@ -38,7 +38,7 @@ const submitInput = () => {
                 className="addDataSelect"
                 onChange={selectType.bind(this)}
                 value={type}
-                >
+              >
                 <option>Choose One</option>
                 <option value="Person">Person</option>
                 <option value="Shelter">Shelter</option>
@@ -50,17 +50,17 @@ const submitInput = () => {
             </div>
             <div className={name(type)}>
               <div className="nameRow"> Name </div>
-              <input id="nameInputs" className="Inputs" type="text" name="name" placeholder={type === 'Person' ? "Enter one name" : "Enter name of shelter"}/>
+              <input id="nameInputs" className="Inputs" type="text" name="name" placeholder={type === 'Person' ? "Enter one name" : "Enter name of shelter"} />
             </div>
 
             <div className="addressType">
               <div className="addressRow"> Address </div>
-              <input id="addressInputs" className="Inputs" type="text" name="address" placeholder="Street Address, City, State, Zip Code"/>
+              <input id="addressInputs" className="Inputs" type="text" name="address" placeholder="Street Address, City, State, Zip Code" />
             </div>
 
             <div className={name(type)}>
               <div className="phoneRow"> Contact # </div>
-              <input id="phoneInputs" className="Inputs" type="text" name="description" placeholder="Phone Number"/>
+              <input id="phoneInputs" className="Inputs" type="text" name="description" placeholder="Phone Number" />
             </div>
 
             <div className="descriptionType">
@@ -69,8 +69,8 @@ const submitInput = () => {
             </div>
 
             <div className={type === 'Shelter' ? "shelterType" : "hide"}>
-              <div className="capacityRow">Capacity </div> <input id="capacityInputs" className="capacityInputs" type="text" name="capacity" placeholder="Enter Number"/>
-              <div className="availRow">Avail </div> <input id="availInputs" className="availInputs" type="text" name="avail" placeholder="Enter Number"/>
+              <div className="capacityRow">Capacity </div> <input id="capacityInputs" className="capacityInputs" type="text" name="capacity" placeholder="Enter Number" />
+              <div className="availRow">Avail </div> <input id="availInputs" className="availInputs" type="text" name="avail" placeholder="Enter Number" />
             </div>
 
             <div
